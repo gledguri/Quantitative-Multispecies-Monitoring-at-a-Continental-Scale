@@ -29,7 +29,7 @@ PCR product was cleaned using Ampure Beads (1.2x) and then indexed in a second P
 
 \subsection*{Mock community}
 
-We constructed mock communities with even and skewed species total genomic DNA using Qubit HS assay quantification method. We then quantified the concentration of the 12S rRNA gene using MarVer1 primers (forward: CGTGCCAGCCACCGCG; reverse: GGGTATCTAATCCYAGTTTG \cite{valsecchi2020}), which perfectly match the template and give unbiased estimates of concentration, using ddPCR (Bio-Rad, Inc., QX200 Droplet Digital PCR system). Each tissue of each species was quantified in a 22 $\mu$L reaction consisted of 2 $\mu$L of DNA template from genomic DNA , 11 $\mu$L of ddPCR EvaGreen (Bio-Rad), 0.22 $\mu$L of each forward and reverse primers (10 uM), and 0.56 $\mu$L of nuclease free water. The thermocycler reactions were run in C1000 Touch Thermal Cycler with 96-Deep Well Reaction Module (Bio-Rad) using the PCR program as follows: 2 min at 50°C for enzyme activation, 2 min at 95°C for initial denaturation, and 40 cycles of denaturation for 1 sec at 95°C and primer annealing and elongation for 30 sec min at 60°C, with a ramp rate of 2°C per s and heldat 4°C until droplets were read. Droplets were determined to be positive after drawing a threshold based on NTCs.
+We constructed mock communities with even and skewed species total genomic DNA using Qubit HS assay quantification method. We then quantified the concentration of the 12S rRNA gene using MarVer1 primers (forward: CGTGCCAGCCACCGCG; reverse: GGGTATCTAATCCYAGTTTG \cite{valsecchi2020}), which perfectly matched the template to give unbiased estimates of concentration, using ddPCR (Bio-Rad, Inc., QX200 Droplet Digital PCR system). Each tissue of each species was quantified in a 22 $\mu$L reaction consisted of 2 $\mu$L of DNA template from genomic DNA , 11 $\mu$L of ddPCR EvaGreen (Bio-Rad), 0.22 $\mu$L of each forward and reverse primers (10 uM), and 0.56 $\mu$L of nuclease free water. The thermocycler reactions were run in C1000 Touch Thermal Cycler with 96-Deep Well Reaction Module (Bio-Rad) using the PCR program as follows: 2 min at 50°C for enzyme activation, 2 min at 95°C for initial denaturation, and 40 cycles of denaturation for 1 sec at 95°C and primer annealing and elongation for 30 sec min at 60°C, with a ramp rate of 2°C per s and heldat 4°C until droplets were read. Droplets were determined to be positive after drawing a threshold based on NTCs.
 
 \subsection*{Bioinformatics}
 Starting with Illumina-demultiplexed sequencing files, we first removed primer and adapter sequences using Cutadapt v4.9, applying the default mismatch tolerance parameter (-e 0.1) \cite{martin2011}. Next, we performed quality filtering using the filterAndTrim function from the dada2 R package, retaining its default parameters while specifying the optional truncLen argument to match the minimum MiFish amplicon length. After filtering, we denoised the sequences using dada2 with default settings \cite{callahan2016}, which resulted in a list of Amplicon Sequence Variants (ASVs) across all samples. Each resulting ASV was then assigned a unique 28-character hash code using the sha-1 algorithm with the R function map\_chr. This allowed us to create a common database of ASVs by hash, enabling us to track which sequences have already been annotated for consistency and to avoid redundant computational efforts.
@@ -50,43 +50,8 @@ OLE + GLED
 %%% Each figure should be on its own page
 \begin{figure}
 \centering
-\includegraphics[width=0.99\textwidth]{plots/5_Supplementary_Figure_1.jpg}
-\caption{First figure}
-\end{figure}
-
-%%% Each figure should be on its own page
-\begin{figure}
-\centering
-\includegraphics[width=0.99\textwidth]{plots/6_Supplementary_Figure_2.jpg}
-\caption{First figure}
-\end{figure}
-
-%%% Each figure should be on its own page
-\begin{figure}
-\centering
-\includegraphics[width=0.99\textwidth]{plots/7_Supplementary_Figure_3.jpg}
-\caption{First figure}
-\end{figure}
-
-%%% Each figure should be on its own page
-\begin{figure}
-\centering
-\includegraphics[width=0.99\textwidth]{plots/8_Supplementary_Figure_4.jpg}
-\caption{First figure}
-\end{figure}
-
-%%% Each figure should be on its own page
-\begin{figure}
-\centering
-\includegraphics[width=0.80\textwidth]{plots/9_Supplementary_Figure_5.jpg}
-\caption{First figure}
-\end{figure}
-
-%%% Each figure should be on its own page
-\begin{figure}
-\centering
-\includegraphics[width=0.89\textwidth]{plots/10_Supplementary_Figure_6.jpg}
-\caption{First figure}
+\includegraphics[width=0.98\textwidth]{plots/5_Supplementary_Figure_1.jpg}
+\caption{Continuation of Fig. 1. Estimated species eDNA for \textit{Clupea pallasi}, \textit{Trachurus symmetricus}, \textit{Scomber japonicus}, \textit{Thaleichthys pacificus}, \textit{Leuroglossus stilbius}, and \textit{Tarletonbaeania crenularis} concentration (A) across 0, 50, 150, 300, and 500m depth samples and known depth distribution of those species from literature (B).}
 \end{figure}
 
 %%% Each figure should be on its own page
@@ -96,9 +61,46 @@ OLE + GLED
 \caption{Vertical (A) and latitudinal (B) distribution of eDNA concentrations grouped in ecological groups (surface south, surface north, midwater, and deepwater). Mean eDNA concentration of vertical distribution is shown with dots and 99\% upper quantile with ticks (A). Probability density functions (PDF) of estimated eDNA concentrations across latitudinal gradients (B; square root transformed of x-axis to enhance low concentration peaks). Key geographic features, such as the Columbia River and Heceta Bank, are marked to indicate alignment of species distributions.}
 \end{figure}
 
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{plots/6_Supplementary_Figure_2.jpg}
+\caption{Frequency distribution of eDNA concentration for each (n = 12) species included in this study. The dashed red line indicates the threshold model estimated concentration (translated copies/L) for defining presence and absence of sequenced (through metabarcoding) taxa}
+\end{figure}
+
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{plots/7_Supplementary_Figure_3.jpg}
+\caption{Three-dimentional distribution of samples collected that were run through qPCR (ligh blue), metabarcoding (dark blue), and were used jointly in the Bayesian model (Fig. 4; red)}
+\end{figure}
+
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.99\textwidth]{plots/8_Supplementary_Figure_4.jpg}
+\caption{Probability of species co-occurrence with Pacific hake, where blue bars represent non-occurrence and orange bars indicate co-occurrence. \textit{Engraulis mordax} exhibits the most inverse habitat overlap with hake, while \textit{Stenobrachius leucopsarus} shows the highest habitat overlap.}
+\end{figure}
+
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.80\textwidth]{plots/9_Supplementary_Figure_5.jpg}
+\caption{Posterior predictes of three model compartments, qPCR continuous model (top part), qPCR occupancy model (middle part), and metabarcoding model (bottom part)}
+\end{figure}
+
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.89\textwidth]{plots/10_Supplementary_Figure_6.jpg}
+\caption{Un-smoothed estimated species eDNA concentration (copies/L) for all the species included in this study concentration across 0, 50, 150, 300, and 500m depth samples.}
+\end{figure}
+
+
+
 
 \begin{table}\centering
-\caption{Initial relative abundances of the selected species across different mock communities.}
+\caption{Initial relative abundances (measured by amplifying the 12S rRNA gene using MarVer1 primers \cite{valsecchi2020} and ddPCR QX200 Droplet Digital PCR system (Bio-Rad, Inc.)) of the selected species (n=12) across different mock communities (n=8). NA represent no DNA template included.}
     \begin{tabular}{lcccccccc}
         \toprule
         {Species} & \multicolumn{2}{c}{Mock1} & \multicolumn{2}{c}{Mock2} & \multicolumn{2}{c}{Mock3} & \multicolumn{2}{c}{Mock4} \\
