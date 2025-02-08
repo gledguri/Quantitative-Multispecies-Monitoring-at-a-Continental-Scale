@@ -4,7 +4,8 @@
 \templatetype{pnassupportinginfo}
 
 \title{Quantitative, Multispecies Monitoring at a Continental Scale}
-\author{Gledis Guri, Owen Liu, Ryan P. Kelly, Megan Shaffer, Kim Parsons, Krista M. Nichols, Pedro F. P. Brandão-Dias and Andrew Olaf Shelton}
+\author{Gledis Guri, Owen Liu, Ryan P. Kelly, Megan Shaffer, Kim Parsons, Ana Ram\'on-Laca,\\
+Krista M. Nichols, Pedro F. P. Brandão-Dias and Andrew Olaf Shelton}
 \correspondingauthor{Gledis Guri.\\E-mail: gguri@uw.edu}
 
 \begin{document}
@@ -25,7 +26,6 @@ In total, 568 samples, including 554 environmental samples, 7 PCR blanks and 7 p
 
 PCR product was cleaned using Ampure Beads (1.2x) and then indexed in a second PCR reaction (PCR2), with the following recipe: 12.5 $\mu$L of KAPA HiFi HotStart ReadyMix (Roche Diagnostics), 1.25 $\mu$L of an index from IDT for Illumina DNA/RNA UD Indexes (Sets A-D), 5 $\mu$L of PCR1 product, and 6.25 $\mu$L of nuclease free water. Cycling conditions included an initial denaturation of 95°C for 5 min; 8 cycles of: 98°C for 20 sec, 56°C for 30 sec, 72°C for 1 min; and a final extension of 72°C for 5 min. Resulting products were visualized on a 2\% agarose gel and quantified using Quant-iT™ dsDNA Assay Kit (Thermo Fisher Scientific, USA) with Fluoroskan™ Microplate Fluorometer (Thermo Fisher Scientific, USA). Indexed products were normalized by concentration, pooled into libraries for sequencing, and then size- selected to extract only the target fish band using the E-Gel™ SizeSelect™ II Agarose Gels (Thermo Fisher Scientific, USA).  Subsequently the libraries were sequenced on Illumina MiSeq platform using the v3 600 cycle kit. 
 
-%A total of 554 environmental samples of metabarcoding samples sequenced are 554 of which 535 had higher sequencing depth than 1000 reads (indicating good quality samples). From those we indicated that only 371 samples had Pacific hake (\textit{Merluccius productus}) present jointly with qPCR positive detection of the same species. All libraries produced a total of 56,279,345 reads with 54,285,713 reads (96.5\%) belonging to class \textit{Actinopteri}. A total of 222 unique species was identified from which 165 belonged to fish. 
 
 \subsection*{Mock community}
 
@@ -65,14 +65,14 @@ OLE + GLED
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{plots/6_Supplementary_Figure_2.jpg}
-\caption{Frequency distribution of eDNA concentration for each (n = 12) species included in this study. The dashed red line indicates the threshold model estimated concentration (translated copies/L) for defining presence and absence of sequenced (through metabarcoding) taxa}
+\caption{Frequency distribution of eDNA concentration for each species included in this study (n = 12). The dashed red line indicates the threshold model estimated concentration (copies/L) for defining presence and absence of sequenced (through metabarcoding) taxa}
 \end{figure}
 
 %%% Each figure should be on its own page
 \begin{figure}
 \centering
 \includegraphics[width=0.99\textwidth]{plots/7_Supplementary_Figure_3.jpg}
-\caption{Three-dimentional distribution of samples collected that were run through qPCR (ligh blue), metabarcoding (dark blue), and were used jointly in the Bayesian model (Fig. 4; red)}
+\caption{Three-dimensional distribution of samples collected that were run through qPCR (light blue), metabarcoding (dark blue), and were used jointly in the Bayesian model (Fig. 4; red). Jointly modeled samples are those that detected Pacific hake -- used as a reference species for quantification -- in both qPCR and metabarcoding assays.}
 \end{figure}
 
 %%% Each figure should be on its own page
@@ -85,39 +85,39 @@ OLE + GLED
 %%% Each figure should be on its own page
 \begin{figure}
 \centering
-\includegraphics[width=0.80\textwidth]{plots/9_Supplementary_Figure_5.jpg}
-\caption{Posterior predictes of three model compartments, qPCR continuous model (top part), qPCR occupancy model (middle part), and metabarcoding model (bottom part)}
+\includegraphics[width=0.98\textwidth]{plots/9_Supplementary_Figure_5.jpg}
+\caption{Mean posterior predictions for three model compartments, qPCR continuous model (A), qPCR occupancy model (B), mock community model (C and D on species proportions and number of reads) and metabarcoding model (E)}
 \end{figure}
 
 %%% Each figure should be on its own page
 \begin{figure}
 \centering
 \includegraphics[width=0.89\textwidth]{plots/10_Supplementary_Figure_6.jpg}
-\caption{Un-smoothed estimated species eDNA concentration (copies/L) for all the species included in this study concentration across 0, 50, 150, 300, and 500m depth samples.}
+\caption{Estimated species eDNA concentration (copies/L) for all the species included in this study concentration across 0, 50, 150, 300, and 500m depth samples, without spatial smoothing.}
 \end{figure}
 
 
 
 
 \begin{table}\centering
-\caption{Initial relative abundances (measured by amplifying the 12S rRNA gene using MarVer1 primers \cite{valsecchi2020} and ddPCR QX200 Droplet Digital PCR system (Bio-Rad, Inc.)) of the selected species (n=12) across different mock communities (n=8). NA represent no DNA template included.}
+\caption{Initial proportional abundances (measured by amplifying the 12S rRNA gene using MarVer1 primers \cite{valsecchi2020} and ddPCR QX200 Droplet Digital PCR system (Bio-Rad, Inc.)) of the selected species (n=12) across different mock communities (n=8). NA represent no DNA template included.}
     \begin{tabular}{lcccccccc}
         \toprule
         {Species} & \multicolumn{2}{c}{Mock1} & \multicolumn{2}{c}{Mock2} & \multicolumn{2}{c}{Mock3} & \multicolumn{2}{c}{Mock4} \\
         & Even & Skew & Even & Skew & Even & Skew & Even & Skew \\
         \midrule
-        \textit{Clupea pallasii}           & 0.437 & 0.325  & 0.042  & 0.009     & NA         & NA          & 0.025      & 0.038 \\
+        \textit{Clupea pallasii}           & 0.437 & 0.325  & 0.042  & 0.009     & -         & -          & 0.025      & 0.038 \\
         \textit{Engraulis mordax}          & 0.122 & 0.034  & 0.15 & 0.15       & 0.146      & 0.16       & 0.308      & 0.478 \\
-        \textit{Leuroglossus stilbius}     & 0.108 & 0.29   & NA & NA         & NA         & NA         & NA         & NA \\    
+        \textit{Leuroglossus stilbius}     & 0.108 & 0.29   & - & -         & -         & -         & -         & - \\    
         \textit{Merluccius productus}      & 0.079 & 0.144  & 0.12 & 0.06       & 0.117      & 0.075      & 0.247      & 0.287 \\
-        \textit{Microstomus pacificus}     & NA    & NA     & 0.057  & 0.215     & NA         & NA         & NA         & NA \\    
+        \textit{Microstomus pacificus}     & -    & -     & 0.057  & 0.215     & -         & -         & -         & - \\    
         \textit{Sardinops sagax}           & 0.028 & 0.033  & 0.14 & 0.035      & 0.137      & 0.025      & 0.289      & 0.131 \\
-        \textit{Scomber japonicus}         & NA    & NA     & 0.122  & 0.053      & 0.119      & 0.027     & NA         & NA \\    
-        \textit{Sebastes entomelas}        & NA    & NA     & NA & NA          & 0.068      & 0.218     & NA         & NA \\    
-        \textit{Stenobrachius leucopsarus} & NA    & NA     & NA & NA          & 0.356      & 0.487     & NA         & NA \\    
-        \textit{Tactostoma macropus}       & NA    & NA     & 0.13 & 0.324     & NA         & NA         & NA         & NA \\    
-        \textit{Tarletonbeania crenularis} & NA    & NA     & 0.083  & 0.124     & NA         & NA         & NA         & NA \\    
-        \textit{Thaleichthys pacificus}    & 0.123 & 0.113  & 0.099  & 0.012     & NA         & NA          & 0.013      & 0.021 \\
+        \textit{Scomber japonicus}         & -    & -     & 0.122  & 0.053      & 0.119      & 0.027     & -         & - \\    
+        \textit{Sebastes entomelas}        & -    & -     & - & -          & 0.068      & 0.218     & -         & - \\    
+        \textit{Stenobrachius leucopsarus} & -    & -     & - & -          & 0.356      & 0.487     & -         & - \\    
+        \textit{Tactostoma macropus}       & -    & -     & 0.13 & 0.324     & -         & -         & -         & - \\    
+        \textit{Tarletonbeania crenularis} & -    & -     & 0.083  & 0.124     & -         & -         & -         & - \\    
+        \textit{Thaleichthys pacificus}    & 0.123 & 0.113  & 0.099  & 0.012     & -         & -          & 0.013      & 0.021 \\
         \textit{Trachurus symmetricus}     & 0.103 & 0.06   & 0.057  & 0.018      & 0.056      & 0.008      & 0.118      & 0.04 \\
         \bottomrule
     \end{tabular}

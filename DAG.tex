@@ -25,6 +25,9 @@
     \end{array}$
 };
 \node [above=of qPCR_st, yshift=-1.5cm, font=\large\bfseries] {qPCR Standard model};
+\node[anchor=south east] at ([xshift=5pt, yshift=-15pt] qPCR_st.south east) {\textbf{(2)}};
+
+
 \node (qPCR_en) [node, right=of qPCR_st, fill=myBlue]  at (4,0) {
     $\begin{array}{c}
         Z_{ijdbtr} \sim \mathrm{Bernoulli} \left( 1 - \exp(-2 \cdot C_{ijdbt} \cdot \phi) \right) \\
@@ -34,6 +37,9 @@
     \end{array}$
 };
 \node [above=of qPCR_en, yshift=-1.5cm, font=\large\bfseries] {qPCR Unknown model};
+\node[anchor=south east] at ([xshift=5pt, yshift=-15pt] qPCR_en.south east) {\textbf{(3)}};
+
+
 \node (covariates) [node, below=of qPCR_en, fill=myBlue] { 
 % + \delta0_{ijdbt} \cdot
 % + \delta1_{ijdb}
@@ -43,6 +49,9 @@
     \end{array}$
 };
 \node [above=of covariates, yshift=-1.5cm, xshift=-1.3cm, font=\large\bfseries] {Covariates};
+\node[anchor=south east] at ([xshift=2pt, yshift=-15pt] covariates.south east) {\textbf{(4)}};
+
+
 \node (metabarcoding) [node, below=of covariates, fill=myBlue] {
     $\begin{array}{c}
         R_{ijdb} \sim \mathrm{Multinomial} \left( \pi_{ijdb}, T_{jdb} \right) \\[8pt]
@@ -51,6 +60,9 @@
     \end{array}$
 };
 \node [above=of metabarcoding, yshift=-1.5cm, xshift=-2.5cm, font=\large\bfseries] {Metabarcoding model};
+\node[anchor=south east] at ([xshift=4pt, yshift=-15pt] metabarcoding.south east) {\textbf{(5)}};
+
+
 \node (mock) [node, right=of metabarcoding, fill=yellow!50] {
     $\begin{array}{c}
         R_{im} \sim \mathrm{Multinomial} \left( \pi_{im}, T_{m} \right) \\[8pt]
@@ -58,13 +70,19 @@
         \nu_{im} = (\ln D_{im} - \ln D_{m, i=\mathrm{ref}}) + NPC_{R} \cdot \alpha_i
     \end{array}$
 };
-\node [above=of mock, yshift=-1.5cm, font=\large\bfseries] {Mock metabarcoding model};
+\node [above=of mock, yshift=-1.5cm, font=\large\bfseries] {Mock-community metabarcoding model};
+\node[anchor=south east] at ([xshift=5pt, yshift=-15pt] mock.south east) {\textbf{(1)}};
+
+
 \node (spatial) [node, below=of metabarcoding, fill=green!40] {
     $\begin{array}{c}
         \ln D_{xyz} = \tau + \eta(s) + \varepsilon_{d}(s)
     \end{array}$
 };
 \node [above=of spatial, yshift=-1.5cm, xshift=-1.6cm, font=\large\bfseries] {Spatial model};
+\node[anchor=south east] at ([xshift=19pt, yshift=-4pt] spatial.south east) {\textbf{(6)}};
+
+
 
         % Arrows
         \draw [arrow] (qPCR_st) -- node[midway, above] {
@@ -83,21 +101,22 @@
     %$\delta0, \delta1$ = offset from mean hake \\
     $\rho$ = biological replicate random effect \\
     $\omega$ = ethanol wash effect \\
-    $\xi$ = volume and dilution offset \\
+    $\xi$ = volume filtered and aliquote dilution offset \\
     $\mu$ = mean Ct values of qPCR \\
     $\phi$ = probability of positive qPCR amplification \\
     $\sigma$ = standard deviation of qPCR Ct values \\
     $\beta0, \beta1$ = intercept and slope between $\mu$ and eDNA concentration (K and C) \\
     $\gamma0, \gamma1$ = intercept and slope between $\sigma$ and eDNA concentration (K and C) \\
     $\alpha$ = amplification efficiency relative to reference species \\
-    $\pi$ = sequence proportions at the end of PCR [0,1] \\
-    $\nu$ = sequence proportions at the end of PCR \\
+    $\pi$ = sequence proportions at the end of PCR (proportion [0,1]) \\
+    $\nu$ = sequence proportions at the end of PCR (additive log-ratio)\\
     $\tau$ = scalar intercept\\
     $\eta$ = spatial field \\
     $\varepsilon$ =  depth specific spatial field
 };
+
 % Legend: Subscripts
-\node (subscripts) [rectangle, draw, align=left, below=of qPCR_st, text width=7cm, fill=myGrey] at (0.4,0) {
+\node (subscripts) [rectangle, draw, align=left, below=of qPCR_st, text width=7cm, fill=myGrey] at (0.4,-0.7) {
     \textbf{Subscripts} \\
     $i$ = species \\
     $j$ = station \\
@@ -112,17 +131,17 @@
 % Legend: Data
 \node (data) [rectangle, draw, align=left, below=of subscripts, text width=7cm, fill=myGrey] at (0.4,-5.6){
     \textbf{Data} \\
-    $Z$ = qPCR amplification yes/no (0,1) \\
+    $Z$ = qPCR amplification (yes=1; no=0) \\
     $Y$ = qPCR Ct values \\
     $K$ = Known concentration in copies/$\mu$L \\
     $R$ = metabarcoding sequencing reads \\
     $T$ = total number sequencing reads
 };
 % Legend: State variables
-\node (state) [rectangle, draw, align=left, right=of qPCR_en, text width=6cm, fill=myGrey] at (11.9,-9){
+\node (state) [rectangle, draw, align=left, right=of qPCR_en, text width=7.5cm, fill=myGrey] at (11.9,-9){
     \textbf{State variables} \\
-    $C$ = unknown eDNA concentration \\
-    $D$ = unknown eDNA concentration
+    $C$ = unknown eDNA concentration (copies/$\mu$L) \\
+    $D$ = unknown eDNA concentration (copies/L)
 };
     \end{tikzpicture}
     %\caption{Multifish DAG}
