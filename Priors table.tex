@@ -29,18 +29,20 @@ $I$ & aliquote dilution factor & -\\
 &&\\
 &State processes&\\
 \hline
-$E$ & unknown DNA concentration in copies/$\mu$L & - \\
+$E_{s\neq H}$ & unknown DNA concentration in copies/$\mu$L & $\mathcal{N}(0,5)$\\
 $D$ & unknown DNA concentration in copies/L & - \\
 $F$ & smoothed DNA concentration in copies/L & - \\
 &&\\
 
 &Parameters&\\
 \hline
-$\psi$& mean hake eDNA concentration (copies/$\mu$L) & $\mathcal{N}(2,2)$\\
-$\epsilon_{(x,y,d)}$& depth specific random effect & $\mathcal{N}(0,\tau)$\\
-$\tau$& standard deviation of depth specific random effect & $\mathcal{N}(0,0.2)$\\
-$\delta$& biological replicate random effect & $\mathcal{N}(0,\sigma_D)$\\
-$\sigma_D$& standard deviation of biological replicate random effect  & $\mathcal{N}(0,3)$\\
+$\psi$& overall mean hake eDNA concentration (copies/$\mu$L) & $\mathcal{N}(2,2)$\\
+$\epsilon_{(x,y,d)}$& spatial and depth specific random effect & $\mathcal{N}(0,\sigma_D)$\\
+$\sigma_D= (0, +\infty)$& standard deviation of spatial and depth specific random effect & $\mathcal{N}(0,3)$\\
+
+$\delta$& biological replicate random effect & $\mathcal{N}(0,\tau)$\\
+$\tau = (0, +\infty)$& standard deviation of biological replicate random effect & $\mathcal{N}(0,0.2)$\\
+
 $\phi$& intercept of the qPCR probability of detection relationship & $\mathcal{N}(3,1)$\\
 $\beta0$& intercept of the linear relation between the mean Ct values&$\mathcal{N}(39,3)$\\
 &and eDNA concentration (K and E) & \\
@@ -72,14 +74,3 @@ $j$& qPCR standard aliquote sample & -\\
 \end{table}
 
 \end{document}
-
-
-mean_hake ~normal(2,2); //global mean hake concentration
-log_D_sigma ~ normal(0,3); //variance on log_D_station_depth
-log_D_station_depth
-logit_phi_0
-gamma_1 ~ std_normal();
-gamma_0 ~ std_normal();
-beta_std_curve_0
-beta_std_curve_1
-log_D_raw
