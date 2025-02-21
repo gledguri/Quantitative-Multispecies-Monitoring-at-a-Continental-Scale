@@ -129,7 +129,7 @@ where $T_{i}$ is the total number of reads observed across all species for that 
 As with the qPCR analyses, in the absence of additional information estimates of $\alpha$ and $E$ cannot be statistically identified.  We use the mock community data, which has known input DNA concentrations and  same basic model as for the metabarcoding observations but instead of having unknown DNA concentrations, we have known inputs for each species $L_{sm}$ in mock community $m$. Then:
 
 \begin{align} 
- \nu_{sm} &= \left( L_{sm} - L_{Rm}\right) + N_{PCR} \left(\alpha_s - \alpha_{Ri} \right) 
+ \nu_{sm} &= \left( L_{sm} - L_{Rm}\right) + N_{PCR} \left(\alpha_s - \alpha_{Ri} \right) \\
   \pi_{sm} &= \dfrac{e^{\nu_{sm}}}{\sum_{s=1}^S e^{\nu_{sm}}} \\
   \boldsymbol{R}_{m} & \sim Multinomial\left(\boldsymbol{\pi}_{m},T_{m}\right) 
 \end{align}
