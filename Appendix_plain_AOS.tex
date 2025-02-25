@@ -55,7 +55,7 @@ PCR product was cleaned using Ampure Beads (1.2x) and then indexed in a second P
 
 \subsection*{Mock community}
 
-We constructed mock communities with even and skewed species total genomic DNA using Qubit HS assay quantification method. We then quantified the concentration of the 12S rRNA gene using MarVer1 primers (forward: CGTGCCAGCCACCGCG; reverse: GGGTATCTAATCCYAGTTTG \cite{valsecchi2020}), which perfectly matched the template to give unbiased estimates of concentration, using ddPCR (Bio-Rad, Inc., QX200 Droplet Digital PCR system). Each tissue of each species was quantified in a 22 $\mu$L reaction consisted of 2 $\mu$L of DNA template from genomic DNA , 11 $\mu$L of ddPCR EvaGreen (Bio-Rad), 0.22 $\mu$L of each forward and reverse primers (10 uM), and 0.56 $\mu$L of nuclease free water. The thermocycler reactions were run in C1000 Touch Thermal Cycler with 96-Deep Well Reaction Module (Bio-Rad) using the PCR program as follows: 2 min at 50°C for enzyme activation, 2 min at 95°C for initial denaturation, and 40 cycles of denaturation for 1 sec at 95°C and primer annealing and elongation for 30 sec min at 60°C, with a ramp rate of 2°C per s and heldat 4°C until droplets were read. Droplets were determined to be positive after drawing a threshold based on NTCs.
+We constructed mock communities with even and skewed species total genomic DNA using Qubit HS assay quantification method. We then quantified the concentration of the 12S rRNA gene using MarVer1 primers (forward: CGTGCCAGCCACCGCG; reverse: GGGTATCTAATCCYAGTTTG \cite{valsecchi2020}), which perfectly matched the template to give unbiased estimates of concentration, using ddPCR (Bio-Rad, Inc., QX200 Droplet Digital PCR system). Each tissue of each species was quantified in a 22 $\mu$L reaction consisted of 2 $\mu$L of DNA template from genomic DNA , 11 $\mu$L of ddPCR EvaGreen (Bio-Rad), 0.22 $\mu$L of each forward and reverse primers (10 uM), and 0.56 $\mu$L of nuclease free water (see Table S.\ref{tab:mock_table} for DNA quantification results). The thermocycler reactions were run in C1000 Touch Thermal Cycler with 96-Deep Well Reaction Module (Bio-Rad) using the PCR program as follows: 2 min at 50°C for enzyme activation, 2 min at 95°C for initial denaturation, and 40 cycles of denaturation for 1 sec at 95°C and primer annealing and elongation for 30 sec min at 60°C, with a ramp rate of 2°C per s and heldat 4°C until droplets were read. Droplets were determined to be positive after drawing a threshold based on NTCs. 
 
 \subsection*{Bioinformatics}
 Starting with Illumina-demultiplexed sequencing files, we first removed primer and adapter sequences using Cutadapt v4.9, applying the default mismatch tolerance parameter (-e 0.1) \cite{martin2011}. Next, we performed quality filtering using the filterAndTrim function from the dada2 R package, retaining its default parameters while specifying the optional truncLen argument to match the minimum MiFish amplicon length. After filtering, we denoised the sequences using dada2 with default settings \cite{callahan2016}, which resulted in a list of Amplicon Sequence Variants (ASVs) across all samples. Each resulting ASV was then assigned a unique 28-character hash code using the sha-1 algorithm with the R function map\_chr. This allowed us to create a common database of ASVs by hash, enabling us to track which sequences have already been annotated for consistency and to avoid redundant computational efforts.
@@ -150,9 +150,14 @@ The above statistical model provides predictions of species-specific DNA concent
 $$E_i(xyz) = \tau + \eta(s) + \varepsilon_{d}(s)$$
 where x,y,z index longitude, latitude, and depth, respectively, $\tau$ is scalar intercept, $\eta(s)$ is a spatial smooth shared among depths, and $\varepsilon_d(s)$ is a depth-specific spatial smooth. Both $\eta(s)$ and $\varepsilon_d(s)$ are a zero-centered Gaussian random field estimated using the stochastic partial differntial equation (SPDE) approximation (see \cite{anderson2022}). Each species was fitted individually while we created and selected the best mesh for approximating spatial Gaussian random fields as part of the model.
 
-\subsection*{Model convergance}
+\section*{Model convergance}
+Convergence and reliability of the Bayesian model were assessed through comprehensive diagnostics. All parameters (Table S.\ref{tab:priortable}) exhibited Gelman-Rubin convergence statistics ($\hat{R} < 1.05$) and effective sample sizes (ESS) exceeding 200 per parameter, indicating successful convergence and efficient mixing of the six independent chains (Fig. S.\ref{tab:diagnostics}). An exception was the parameter $\psi$ (mean hake), which showed marginally lower mixing ESS$_\psi$ = 149.7) suggesting mild autocorrelation but no critical failure of convergence.
 
-Gelman-Rubin statistics.  Predicted-observed, etc.
+No divergent transitions were detected during sampling, and the maximum tree depth was not exceeded, indicating no issues with divergence or exploration limits (Fig. S.\ref{tab:diagnostics}). The posterior likelihood demonstrated convergence before the sampling phase began, with all chains exhibiting high mixing, confirming robust exploration of the parameter space (Fig. S.\ref{tab:diagnostics}).
+
+Prior sensitivity analyses revealed that posterior estimates differed from priors, demonstrating that the posteriors were appropriately updated based on the observed data rather than being heavily influenced by prior assumptions (Fig. S.\ref{tab:prior_sensitivity}). Additionally, the posterior predictive checks (PPC) demonstrated that the model reliably reproduced the observed data, supporting the validity of parameter estimates (Fig. S.\ref{tab:PPC}). 
+
+Collectively, these diagnostics confirm the reliability and validity of the Bayesian model used here.
 
 
 %%% Each figure should be on its own page
@@ -195,6 +200,7 @@ Gelman-Rubin statistics.  Predicted-observed, etc.
 \centering
 \includegraphics[width=0.98\textwidth]{plots/9_Supplementary_Figure_5.jpg}
 \caption{Mean posterior predictions for three model compartments, qPCR continuous model (A), qPCR occupancy model (B), mock community model (C and D on species proportions and number of reads) and metabarcoding model (E)}
+\label{tab:PPC}
 \end{figure}
 
 %%% Each figure should be on its own page
@@ -202,6 +208,22 @@ Gelman-Rubin statistics.  Predicted-observed, etc.
 \centering
 \includegraphics[width=0.89\textwidth]{plots/10_Supplementary_Figure_6.jpg}
 \caption{Estimated species eDNA concentration (copies/L) for all the species included in this study concentration across 0, 50, 150, 300, and 500m depth samples, without spatial smoothing.}
+\end{figure}
+
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.88\textwidth]{plots/11_Diagnostic_Fig_1.jpg}
+\caption{Bayesian model diagnostic plots including $\hat{R}$ and ESS for each parameter (A) and posterior likelihood, acceptance rate, tree depth, divergence transition, and step size for each iteration in each chain (including warm up phase; B).}
+\label{tab:diagnostics}
+\end{figure}
+
+%%% Each figure should be on its own page
+\begin{figure}
+\centering
+\includegraphics[width=0.98\textwidth]{plots/12_Diagnostic_Fig_2.jpg}
+\caption{Prior sensitivity plots indicating the distribution of priors in red and posteriors in black with dots indicating the mean and ticks showing 95\% credible interval.}
+\label{tab:prior_sensitivity}
 \end{figure}
 
 \clearpage
@@ -227,6 +249,7 @@ Gelman-Rubin statistics.  Predicted-observed, etc.
         \textit{Trachurus symmetricus}     & 0.103 & 0.06   & 0.057  & 0.018      & 0.056      & 0.008      & 0.118      & 0.04 \\
         \bottomrule
     \end{tabular}
+    \label{tab:mock_table}
 \end{table}
 \clearpage
 
@@ -236,31 +259,33 @@ Gelman-Rubin statistics.  Predicted-observed, etc.
          & \textbf{Description} & \textbf{Prior} \\
 &Data & \\
 \hline
-$K$ & known DNA concentration from qPCR standards in copies/$\mu$L & - \\
+$K$ & known DNA concentration from qPCR stsandards in ln(copies/$\mu$L) & - \\
 $Z$ & qPCR amplification (yes=1; no=0) & - \\
 $Y$ & qPCR cycle threshold (Ct) & - \\
 $R$ & metabarcoding number of reads & - \\
 $T$ & total number of reads for all S species & - \\
 $N_{PCR}$ & number of metabarcoding PCR cycles & - \\
-$L$ & known DNA concentration from mock commuinties in copies/$\mu$L & - \\
+$L$ & known DNA concentration from mock commuinties in ln(copies/$\mu$L) & - \\
 $V$ & volume filtered and aliquote dilution offset & -\\
 $I$ & aliquote dilution factor & -\\
 
 &&\\
 &State processes&\\
 \hline
-$E$ & unknown DNA concentration in copies/$\mu$L & - \\
-$D$ & unknown DNA concentration in copies/L & - \\
+$E_{s\neq H}$ & unknown DNA concentration in ln(copies/$\mu$L) & $\mathcal{N}(0,5)$\\
+$D$ & unknown DNA concentration in ln(copies/$\mu$L)& - \\
 $F$ & smoothed DNA concentration in copies/L & - \\
 &&\\
 
 &Parameters&\\
 \hline
-$\psi$& mean hake eDNA concentration (copies/$\mu$L) & $\mathcal{N}(2,2)$\\
-$\epsilon_{(x,y,d)}$& depth specific random effect & $\mathcal{N}(0,\tau)$\\
-$\tau$& standard deviation of depth specific random effect & $\mathcal{N}(0,0.2)$\\
+$\psi$& overall mean hake eDNA concentration in ln(copies/$\mu$L) & $\mathcal{N}(2,2)$\\
+$\epsilon_{j}$& spatial and depth specific random effect & $\mathcal{N}(0,\tau)$\\
+$\tau$& standard deviation of biological replicate random effect & $\mathcal{TN}(0,0.2;0, +\infty)$\\
+
 $\delta$& biological replicate random effect & $\mathcal{N}(0,\sigma_D)$\\
-$\sigma_D$& standard deviation of biological replicate random effect  & $\mathcal{N}(0,3)$\\
+$\sigma_D $& standard deviation of spatial and depth specific random effect & $\mathcal{TN}(0,3;0, +\infty)$\\
+
 $\phi$& intercept of the qPCR probability of detection relationship & $\mathcal{N}(3,1)$\\
 $\beta0$& intercept of the linear relation between the mean Ct values&$\mathcal{N}(39,3)$\\
 &and eDNA concentration (K and E) & \\
@@ -270,27 +295,48 @@ $\gamma0$& intercept of the linear relation between the standard deviation&$\mat
 &of Ct values and eDNA concentration (K and E) & \\
 $\gamma1$& intercept of the linear relation between the standard deviation &$\mathcal{N}(0,1)$\\
 &of Ct values and eDNA concentration (K and E) & \\
-$\alpha$& species amplification efficiency & fixed\\
-$\zeta$& ethanol wash effect & fixed\\
+$\alpha_s$& species amplification efficiency relative to reference species (R) & fixed (Table S.\ref{tab:alphas})\\
+$\zeta$& ethanol wash effect & fixed (-1.15)\\
 &&\\
-&Subscripts&\\
+&Index&\\
 \hline
 $s$& species ($H$ = Hake) & -\\
-$x$& northing & -\\
-$y$& easting & -\\
-$d$& depth & -\\
+$j$& location (northing(x), easting(y), depth(d)))& -\\
 $i$& biological replicate & -\\
 $r$& technical replicate & -\\
 $p$& qPCR plate & -\\
 $m$& mock community sample & -\\
-$j$& qPCR standard aliquote sample & -\\
+$q$& qPCR standard aliquote sample & -\\
+$R$& metabarcoding reference species & -\\
 
 
     \end{tabular}
     \caption{Data, state processes, parameters, and subscripts employed in the joint Bayesian model and their prior distributions}
-    \label{tab:filter_error}
+    \label{tab:priortable}
+\end{table}
+
+\clearpage
+\begin{table}\centering
+\caption{Species specific metabarcoding amplification efficiency relative to reference species (R; \textit{Merluccius productus} here).}
+    \begin{tabular}{lc}
+\textbf{Species} & $\alpha$ \\
+\textit{Clupea pallasii} &   -0.00138 \\
+\textit{Engraulis mordax} &    0.00557 \\
+\textit{Leuroglossus stilbius} &   -0.00390 \\
+\textit{Microstomus pacificus} &    0.00194 \\
+\textit{Sardinops sagax} &    0.00705 \\
+\textit{Scomber japonicus} &    0.00434 \\
+\textit{Sebastes entomelas} &    0.00459 \\
+\textit{Stenobrachius leucopsarus} &    0.00970 \\
+\textit{Tactostoma macropus} &   -0.00091 \\
+\textit{Tarletonbeania crenularis} &    0.00144 \\
+\textit{Thaleichthys pacificus} &   -0.00506 \\
+\textit{Trachurus symmetricus} &   -0.00875 \\
+\textit{Merluccius productus} &    0.00000 \\
+    \end{tabular}
+        \label{tab:alphas}
 \end{table}
 \clearpage
 
-\bibliography{Bib.bib}
+\bibliography{clean_bib.bib}
 \end{document}
