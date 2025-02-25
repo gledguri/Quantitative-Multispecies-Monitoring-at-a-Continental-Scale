@@ -16,32 +16,32 @@
          & \textbf{Description} & \textbf{Prior} \\
 &Data & \\
 \hline
-$K$ & known DNA concentration from qPCR standards in copies/$\mu$L & - \\
+$K$ & known DNA concentration from qPCR stsandards in ln(copies/$\mu$L) & - \\
 $Z$ & qPCR amplification (yes=1; no=0) & - \\
 $Y$ & qPCR cycle threshold (Ct) & - \\
 $R$ & metabarcoding number of reads & - \\
 $T$ & total number of reads for all S species & - \\
 $N_{PCR}$ & number of metabarcoding PCR cycles & - \\
-$L$ & known DNA concentration from mock commuinties in copies/$\mu$L & - \\
+$L$ & known DNA concentration from mock commuinties in ln(copies/$\mu$L) & - \\
 $V$ & volume filtered and aliquote dilution offset & -\\
 $I$ & aliquote dilution factor & -\\
 
 &&\\
 &State processes&\\
 \hline
-$E_{s\neq H}$ & unknown DNA concentration in copies/$\mu$L & $\mathcal{N}(0,5)$\\
-$D$ & unknown DNA concentration in copies/L & - \\
-$F$ & smoothed DNA concentration in copies/L & - \\
+$E_{s\neq H}$ & unknown DNA concentration in ln(copies/$\mu$L) & $\mathcal{N}(0,5)$\\
+$D$ & unknown DNA concentration in ln(copies/$\mu$L)& - \\
+$F$ & smoothed DNA concentration in ln(copies/L) & - \\
 &&\\
 
 &Parameters&\\
 \hline
-$\psi$& overall mean hake eDNA concentration (copies/L) & $\mathcal{N}(2,2)$\\
+$\psi$& overall mean hake eDNA concentration in ln(copies/$\mu$L) & $\mathcal{N}(2,2)$\\
 $\epsilon_{(x,y,d)}$& spatial and depth specific random effect & $\mathcal{N}(0,\sigma_D)$\\
-$\sigma_D= (0, +\infty)$& standard deviation of spatial and depth specific random effect & $\mathcal{N}(0,3)$\\
+$\sigma_D $& standard deviation of spatial and depth specific random effect & $\mathcal{TN}(0,3;0, +\infty)$\\
 
 $\delta$& biological replicate random effect & $\mathcal{N}(0,\tau)$\\
-$\tau = (0, +\infty)$& standard deviation of biological replicate random effect & $\mathcal{N}(0,0.2)$\\
+$\tau$& standard deviation of biological replicate random effect & $\mathcal{TN}(0,0.2;0, +\infty)$\\
 
 $\phi$& intercept of the qPCR probability of detection relationship & $\mathcal{N}(3,1)$\\
 $\beta0$& intercept of the linear relation between the mean Ct values&$\mathcal{N}(39,3)$\\
