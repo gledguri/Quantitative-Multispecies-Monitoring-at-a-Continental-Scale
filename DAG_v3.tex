@@ -1,5 +1,5 @@
 \documentclass[landscape]{article}
-\usepackage[paperwidth=252mm, paperheight=170mm, margin=0cm]{geometry}
+\usepackage[paperwidth=252mm, paperheight=180mm, margin=0cm]{geometry}
 \usepackage{tikz}
 \usepackage{amsmath, amsthm, amssymb, mathtools, thmtools}
 \usepackage{xcolor}
@@ -116,20 +116,20 @@
         % \begin{array}{c}
         %     \phi, \\ \beta_0, \beta_1, \\ \gamma_0, \gamma_1
         % \end{array}$} (qPCR_en);
-        \draw [arrow] (state1) -- node[midway, left] {$$} (state2H);
+        \draw [arrow] (state1) -- node[midway, left] {} (state2H);
         \draw [arrow] (state2H) -- node[midway, right] {} (qPCR_en);
         \draw [dashed,arrow] (state2s) -- node[midway, right] {}  (spatial);
         %\draw [arrow] (state1) -- node[midway, right] {}  (spatial);
         \draw [arrow] (mock) -- node[pos=0.7, above] {$\alpha_s$} (metabarcoding);
-        \draw [arrow] (state2H) -- node[midway, right] {$$} (metabarcoding);
-        \draw [arrow] (state2s) -- node[midway, right] {$$} (metabarcoding);
+        \draw [arrow] (state2H) -- node[midway, right] {} (metabarcoding);
+        \draw [arrow] (state2s) -- node[midway, right] {} (metabarcoding);
 
 
 
 % Legend: Parameters
 \node (parameters) [rectangle, draw, align=left, below=of metabarcoding, text width=9cm, fill=myGrey] at (3.5,-6){
     \textbf{Parameters and derived quantities} \\
-    $\psi$ = mean hake eDNA concentration \\
+    $\psi$ = mean hake eDNA concentration (log(copies/$\mu$L) \\
     %$\delta0, \delta1$ = offset from mean hake \\
     $\delta$ = biological replicate random effect \\
     %$\omega$ = ethanol wash effect \\
@@ -170,10 +170,12 @@
     $L$ = known DNA conc. (log(copies/$\mu$L))\\
     $W$ = metabarcoding sequencing reads \\
     $T$ = total number sequencing reads \\
+    $V$ = volume filtered and aliquote dilution offset \\
+    $I$ = aliquote dilution factor \\
 };
 
 % Legend: Data
-\node (States of Interest) [rectangle, draw, align=left, below=of subscripts, text width=8cm, fill=myGrey] at (12.5,-9.25){
+\node (States of Interest) [rectangle, draw, align=left, below=of subscripts, text width=8cm, fill=myGrey] at (12.5,-10.25){
     \textbf{States } \\
     $D$ = DNA conc. at a station-depth (log(copies/$\mu$L)) \\
     $E$ = DNA conc. in a biological replicate (log(copies/$\mu$L)) \\
