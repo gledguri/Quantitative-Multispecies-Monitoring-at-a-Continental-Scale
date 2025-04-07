@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.12)  3 APR 2025 12:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.12)  3 APR 2025 15:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -374,30 +374,30 @@ File: plots/DAG_v3.pdf Graphic file (type pdf)
 Package pdftex.def Info: plots/DAG_v3.pdf  used on input line 102.
 (pdftex.def)             Requested size: 455.24408pt x 325.17216pt.
  [6] [7 <./plots/DAG_v3.pdf>] [8]
-<plots/1_Figure_1.jpg, id=256, 3011.25pt x 3914.625pt>
-File: plots/1_Figure_1.jpg Graphic file (type jpg)
-<use plots/1_Figure_1.jpg>
-Package pdftex.def Info: plots/1_Figure_1.jpg  used on input line 124.
-(pdftex.def)             Requested size: 455.24408pt x 591.7678pt.
- [9] [10 <./plots/1_Figure_1.jpg>] [11]
-<plots/2_Figure_2.jpg, id=346, 4215.75pt x 4215.75pt>
-File: plots/2_Figure_2.jpg Graphic file (type jpg)
-<use plots/2_Figure_2.jpg>
-Package pdftex.def Info: plots/2_Figure_2.jpg  used on input line 148.
-(pdftex.def)             Requested size: 284.52756pt x 284.51869pt.
- [12 <./plots/2_Figure_2.jpg>]
-<plots/3_Figure_3.jpg, id=368, 2559.5625pt x 3914.625pt>
-File: plots/3_Figure_3.jpg Graphic file (type jpg)
-<use plots/3_Figure_3.jpg>
-Package pdftex.def Info: plots/3_Figure_3.jpg  used on input line 160.
-(pdftex.def)             Requested size: 369.88582pt x 565.6648pt.
-<plots/4_Figure_4.jpg, id=371, 4215.75pt x 3613.5pt>
-File: plots/4_Figure_4.jpg Graphic file (type jpg)
-<use plots/4_Figure_4.jpg>
-Package pdftex.def Info: plots/4_Figure_4.jpg  used on input line 167.
-(pdftex.def)             Requested size: 455.24408pt x 390.20808pt.
- [13] [14 <./plots/3_Figure_3.jpg>]
-[15 <./plots/4_Figure_4.jpg>] [16] [17] (./Manuscript_plain_v3.bbl [18]
+<plots/1_Figure_1.pdf, id=256, 722.7pt x 939.51pt>
+File: plots/1_Figure_1.pdf Graphic file (type pdf)
+<use plots/1_Figure_1.pdf>
+Package pdftex.def Info: plots/1_Figure_1.pdf  used on input line 124.
+(pdftex.def)             Requested size: 422.77228pt x 549.60397pt.
+ [9] [10 <./plots/1_Figure_1.pdf>] [11]
+<plots/2_Figure_2.pdf, id=356, 1011.78pt x 1011.78pt>
+File: plots/2_Figure_2.pdf Graphic file (type pdf)
+<use plots/2_Figure_2.pdf>
+Package pdftex.def Info: plots/2_Figure_2.pdf  used on input line 150.
+(pdftex.def)             Requested size: 281.86069pt x 281.86069pt.
+ [12 <./plots/2_Figure_2.pdf>]
+<plots/3_Figure_3.pdf, id=384, 614.295pt x 939.51pt>
+File: plots/3_Figure_3.pdf Graphic file (type pdf)
+<use plots/3_Figure_3.pdf>
+Package pdftex.def Info: plots/3_Figure_3.pdf  used on input line 162.
+(pdftex.def)             Requested size: 369.88582pt x 565.71736pt.
+<plots/4_Figure_4.pdf, id=387, 1011.78pt x 867.24pt>
+File: plots/4_Figure_4.pdf Graphic file (type pdf)
+<use plots/4_Figure_4.pdf>
+Package pdftex.def Info: plots/4_Figure_4.pdf  used on input line 169.
+(pdftex.def)             Requested size: 455.24408pt x 390.2147pt.
+ [13] [14 <./plots/3_Figure_3.pdf>]
+[15 <./plots/4_Figure_4.pdf>] [16] [17] (./Manuscript_plain_v3.bbl [18]
 [19] [20] [21] [22] [23] [24] [25]) [26] (./Manuscript_plain_v3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -407,10 +407,10 @@ Package rerunfilecheck Info: File `Manuscript_plain_v3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10124 strings out of 474116
- 158195 string characters out of 5743682
+ 10122 strings out of 474116
+ 158231 string characters out of 5743682
  1939187 words of memory out of 5000000
- 32251 multiletter control sequences out of 15000+600000
+ 32249 multiletter control sequences out of 15000+600000
  563890 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,1895b,853s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -435,10 +435,10 @@ ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
 024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
 24/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Manuscript_plain_v3.pdf (26 pages, 10188946 bytes).
+Output written on Manuscript_plain_v3.pdf (26 pages, 8189503 bytes).
 PDF statistics:
- 575 PDF objects out of 1000 (max. 8388607)
- 486 compressed objects within 5 object streams
+ 613 PDF objects out of 1000 (max. 8388607)
+ 515 compressed objects within 6 object streams
  129 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
